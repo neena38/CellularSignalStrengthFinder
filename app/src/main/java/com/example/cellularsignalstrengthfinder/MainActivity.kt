@@ -38,11 +38,13 @@ class MainActivity : AppCompatActivity() {
         try {
             val telephonyManager = getSystemService(TELEPHONY_SERVICE) as TelephonyManager
             val type=telephonyManager.dataNetworkType
+            Log.e("tag", "$type")
+
             when (type) {
-                18 -> { val cellinfogsm = telephonyManager.allCellInfo[0]as CellInfoLte
+                18 -> { val cellinfogsm = telephonyManager.allCellInfo[0]as CellInfoGsm
                     var req=cellinfogsm.cellSignalStrength
                     Log.e("tag", "$req")}
-                13 -> { val cellinfogsm = telephonyManager.allCellInfo[0]as CellInfoGsm
+                13 -> { val cellinfogsm = telephonyManager.allCellInfo[0]as CellInfoLte
                     var req=cellinfogsm.cellSignalStrength
                     Log.e("tag", "$req")}
             }
