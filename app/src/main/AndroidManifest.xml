@@ -27,7 +27,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CellularSignalStrengthFinder">
         <service
-            android:name=".SignalStrengthChange"
+            android:name=".SignalService"
             android:enabled="true"
             android:exported="true" />
 

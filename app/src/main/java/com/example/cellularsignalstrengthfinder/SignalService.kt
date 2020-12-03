@@ -11,10 +11,11 @@ import android.os.IBinder
 import android.telephony.PhoneStateListener
 import android.telephony.TelephonyManager
 import androidx.core.app.NotificationCompat
+import androidx.room.Room
 
 const val CHANNEL_ID = "my_channel_01"
 
-class SignalStrengthChange : Service() {
+class SignalService : Service() {
 
     private lateinit var mTelephonyManager: TelephonyManager
     private lateinit  var mPhoneStatelistener: signalChange
@@ -40,7 +41,6 @@ class SignalStrengthChange : Service() {
                 .setContentTitle("")
                 .setContentText("").build()
             startForeground(1, notification)
-
         }
     }
 

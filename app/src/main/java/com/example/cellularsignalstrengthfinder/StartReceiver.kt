@@ -9,7 +9,7 @@ class StartReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
         if (intent.action == Intent.ACTION_BOOT_COMPLETED ) {
-            Intent(context, CellularService::class.java).also {
+            Intent(context, SignalService::class.java).also {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     context.startForegroundService(it)
                     return
