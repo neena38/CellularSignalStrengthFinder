@@ -6,13 +6,14 @@ import androidx.room.*
 @Entity
 data class CellularSignalRaw (
     @PrimaryKey val timeStamp: Long,
-    @ColumnInfo(name = "level") val level: Int?,
-    @ColumnInfo(name = "plugged") val plugged: Int?,
-    @ColumnInfo(name = "temp") val temp: Int?,
-    @ColumnInfo(name = "health") val health: Int?,
-    @ColumnInfo(name = "estimatedCapacity") val estimatedCapacity: Int,
-    @ColumnInfo(name = "estimatedAccuracy") val estimatedAccuracy: Int?
-)
+    @ColumnInfo(name = "mCqi") val mCqi: Int?,
+    @ColumnInfo(name = "mLevel") val mLevel: Int?,
+    @ColumnInfo(name = "mRsrp") val mRsrp: Int?,
+    @ColumnInfo(name = "mRsrq") val mRsrq: Int?,
+    @ColumnInfo(name = "mRssi") val mRssi: Int?,
+    @ColumnInfo(name = "mRssnr") val mRssnr: Int?,
+    @ColumnInfo(name = "mTimingAdvance") val mTimingAdvance: Int?
+    )
 
 @Dao
 interface CellularSignalDao {
