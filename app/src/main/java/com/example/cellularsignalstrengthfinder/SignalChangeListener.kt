@@ -16,7 +16,6 @@ class SignalChangeListener(private val context: Context) : PhoneStateListener() 
 
     var signalDB: SignalDatabase = SignalDatabase.getDatabase(context)!!
 
-
     override fun onSignalStrengthsChanged(signalStrength: SignalStrength) {
         var signalRaw: SignalRaw
 
