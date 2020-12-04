@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.core.app.ActivityCompat
 
 
@@ -25,6 +26,8 @@ class MainActivity : AppCompatActivity() {
         } else {
             this.startService(Intent(this, SignalService::class.java))
         }
+        //call to log the database
+        Test(this).log()
     }
 
     private fun requestPermissions() {
