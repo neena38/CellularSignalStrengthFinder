@@ -1,6 +1,5 @@
 package com.example.cellularsignalstrengthfinder
 
-
 import androidx.room.*
 
 @Entity
@@ -21,9 +20,4 @@ interface SignalDao {
 
     @Delete
     fun delete(signalRaw: SignalRaw)
-}
-
-@Database(entities = [SignalRaw::class], version = 1)
-abstract class AppDatabase : RoomDatabase() {
-    abstract fun signalDao(): SignalDao
 }

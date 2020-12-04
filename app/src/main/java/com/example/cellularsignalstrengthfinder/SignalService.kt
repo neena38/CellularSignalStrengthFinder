@@ -11,14 +11,13 @@ import android.os.IBinder
 import android.telephony.PhoneStateListener
 import android.telephony.TelephonyManager
 import androidx.core.app.NotificationCompat
-import androidx.room.Room
 
 const val CHANNEL_ID = "my_channel_01"
 
 class SignalService : Service() {
 
     private lateinit var mTelephonyManager: TelephonyManager
-    private lateinit  var mPhoneStatelistener: signalChange
+    private lateinit  var mPhoneStatelistener: SignalChangeListener
 
     override fun onBind(intent: Intent): IBinder {
         TODO("Return the communication channel to the service.")
@@ -26,7 +25,7 @@ class SignalService : Service() {
 
     override fun onCreate() {
         super.onCreate()
-        mPhoneStatelistener = signalChange(this)
+        mPhoneStatelistener = SignalChangeListener(this)
         mTelephonyManager = getSystemService(TELEPHONY_SERVICE) as TelephonyManager
         if (Build.VERSION.SDK_INT >= 26) {
             val channel = NotificationChannel(
