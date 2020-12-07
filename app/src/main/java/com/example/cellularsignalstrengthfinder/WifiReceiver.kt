@@ -20,6 +20,8 @@ internal class WifiReceiver(private val context: Context) : BroadcastReceiver() 
         val wifiManager =
             context.applicationContext.getSystemService(AppCompatActivity.WIFI_SERVICE) as WifiManager
         strength = wifiManager.connectionInfo.rssi
+        //could add link speed, frequency
+        //Log.d("details", "onReceive: ${wifiManager.connectionInfo.ipAddress}   ${wifiManager.connectionInfo.linkSpeed} ${wifiManager.connectionInfo.frequency} ${wifiManager.connectionInfo.macAddress}")
         level = getLevel(strength)
         wifiRaw = WifiRaw(
             System.currentTimeMillis(), strength, level
