@@ -5,17 +5,13 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.core.app.ActivityCompat
-
 
 const val permissionCode = 200
 val permissions: Array<String> =
     arrayOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.READ_PHONE_STATE)
 
-
 class MainActivity : AppCompatActivity() {
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         }
         //call to log the database
         Test(this).log()
+        Test(this).log1()
     }
 
     private fun requestPermissions() {
