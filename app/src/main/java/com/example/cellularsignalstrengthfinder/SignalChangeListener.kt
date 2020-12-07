@@ -2,12 +2,10 @@ package com.example.cellularsignalstrengthfinder
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.net.wifi.WifiManager
 import android.os.Build
 import android.telephony.*
 import android.util.Log
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AppCompatActivity
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
@@ -18,18 +16,18 @@ class SignalChangeListener(private val context: Context) : PhoneStateListener() 
     @RequiresApi(Build.VERSION_CODES.Q)
     @SuppressLint("ServiceCast")
     override fun onSignalStrengthsChanged(signalStrength: SignalStrength) {
-        val wifiRaw: WifiRaw
         val cellularRaw: CellularRaw
         var level = 0
         var strength = 0
         var type = ""
         var asuLevel = 0
 
-        super.onSignalStrengthsChanged(signalStrength)
         try {
             val telephonyManager =
                 context.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
-            when (val cellInfo = telephonyManager.allCellInfo[0]){
+            val cellInfo = telephonyManager.allCellInfo[0]
+            Log.d("test", "onSignalStrengthsChanged: ")
+            when (cellInfo) {
                 is CellInfoLte -> {
                     type = "LTE"
                     strength = cellInfo.cellSignalStrength.dbm
@@ -98,36 +96,11 @@ class SignalChangeListener(private val context: Context) : PhoneStateListener() 
         level = signalStrength.level
         strength = signalStrength.cdmaDbm*/
 
-
         cellularRaw = CellularRaw(
             System.currentTimeMillis(), type, strength, level, asuLevel
         )
         GlobalScope.launch {
             signalDB.cellularDao().insertAll(cellularRaw)
-        }
-
-        val wifiManager =
-            context.applicationContext.getSystemService(AppCompatActivity.WIFI_SERVICE) as WifiManager
-        strength = wifiManager.connectionInfo.rssi
-        level = getLevel(strength)
-        wifiRaw = WifiRaw(
-            System.currentTimeMillis(), strength, level
-        )
-
-        GlobalScope.launch {
-            signalDB.wifiDao().insertAll(wifiRaw)
-        }
-
-        Log.d("tag", "wifi: $strength, $level")
-
-    }
-
-    private fun getLevel(strength: Int): Int {
-        return when {
-            strength > -50 -> 3
-            strength > -60 -> 2
-            strength > -70 -> 1
-            else -> 0
         }
     }
 }

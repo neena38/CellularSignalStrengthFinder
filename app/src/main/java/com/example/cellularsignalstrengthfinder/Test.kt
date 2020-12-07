@@ -17,6 +17,7 @@ class Test(context: Context) {
 
     fun log1() {
         GlobalScope.launch {
+            Log.d("cellular","inside cellular")
             for (info in signalDB.cellularDao().getAll()) {
                 Log.d("cellular", "$info")
             }

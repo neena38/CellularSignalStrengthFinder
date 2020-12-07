@@ -23,8 +23,8 @@ class MainActivity : AppCompatActivity() {
             this.startService(Intent(this, SignalService::class.java))
         }
         //call to log the database
-        Test(this).log()
-        Test(this).log1()
+    /*    Test(this).log()
+        Test(this).log1()*/
     }
 
     private fun requestPermissions() {
