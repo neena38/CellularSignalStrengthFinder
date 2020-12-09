@@ -87,41 +87,37 @@ class SignalChangeListener(private val context: Context) : PhoneStateListener() 
             //  to find signal strength from SignalStrength
             val ssignal = signalStrength.toString()
             val parts = ssignal.split(" ", "=", ",").toList()
-            var n = 0
+            /*var n = 0
             for (i in parts) {
                 Log.d("test$n", "onSignalStrengthsChanged: $i")
                 n += 1
-            }
+            }*/
 
-            level = parts[13].toInt()
-            if(level>0) {
+            if(parts[13].toInt()>0) {
                 type="CDMA"
+                level = parts[13].toInt()
                 strength = parts[3].toInt()
             }
-            level = parts[23].toInt()
-            if(level>0) {
+            else if(parts[23].toInt()>0) {
                 type="GSM"
+                level = parts[23].toInt()
                 strength = parts[17].toInt()
             }
-            level = parts[35].toInt()
-            if(level>0) {
+            else if(parts[35].toInt()>0) {
                 type="WCDMA"
+                level = parts[35].toInt()
                 strength = parts[31].toInt()
             }
-            level = parts[45].toInt()
-            if(level>0) {
+            if(parts[45].toInt()>0) {
                 type="TDSCDMA"
+                level = parts[45].toInt()
                 strength = parts[43].toInt()
             }
-            level = parts[61].toInt()
-            if(level>0) {
+            if(parts[61].toInt()>0) {
                 type="LTE"
+                level = parts[61].toInt()
                 strength = parts[51].toInt()
             }
-
-
-            Log.e("parse", "$level")
-            Log.d("test", "onSignalStrengthsChanged: $e")
         }
         Log.d("tag", "data: $type, $strength, $level, $asuLevel")
 
