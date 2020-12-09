@@ -6,11 +6,9 @@ import android.content.Intent
 import android.net.wifi.WifiManager
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 internal class WifiReceiver(private val context: Context) : BroadcastReceiver() {
-    private var signalDB: SignalDatabase = SignalDatabase.getDatabase(context)!!
+   // private var signalDB: SignalDatabase = SignalDatabase.getDatabase(context)!!
 
     override fun onReceive(context: Context, intent: Intent) {
         val wifiRaw: WifiRaw

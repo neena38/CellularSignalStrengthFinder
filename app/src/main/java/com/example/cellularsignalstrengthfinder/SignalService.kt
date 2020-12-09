@@ -50,8 +50,11 @@ class SignalService : Service() {
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         mTelephonyManager.listen(mPhoneStatelistener, PhoneStateListener.LISTEN_SIGNAL_STRENGTHS)
         val intentWifi = IntentFilter()
-        intentWifi.addAction(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION)
+        intentWifi.addAction(WifiManager.RSSI_CHANGED_ACTION)
+        val intentWifi2 = IntentFilter()
+        intentWifi2.addAction(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION)
         this.registerReceiver(mWifiReceiver, intentWifi)
+        this.registerReceiver(mWifiReceiver, intentWifi2)
         return super.onStartCommand(intent, flags, startId)
     }
 }
