@@ -14,7 +14,6 @@ class SignalChangeListener(private val context: Context) : PhoneStateListener() 
     private var signalDB: SignalDatabase = SignalDatabase.getDatabase(context)!!
 
     @RequiresApi(Build.VERSION_CODES.Q)
-    @SuppressLint("ServiceCast")
     override fun onSignalStrengthsChanged(signalStrength: SignalStrength) {
         val cellularRaw: CellularRaw
         var level = 0
