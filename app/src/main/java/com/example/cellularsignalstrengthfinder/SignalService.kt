@@ -11,7 +11,6 @@ import android.os.IBinder
 import android.telephony.PhoneStateListener
 import android.telephony.TelephonyManager
 import androidx.core.app.NotificationCompat
-import androidx.room.Room
 
 const val CHANNEL_ID = "my_channel_01"
 
@@ -45,7 +44,7 @@ class SignalService : Service() {
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        mTelephonyManager.listen(mPhoneStatelistener, PhoneStateListener.LISTEN_SIGNAL_STRENGTHS)
+       mTelephonyManager.listen(mPhoneStatelistener, PhoneStateListener.LISTEN_SIGNAL_STRENGTHS)
         return super.onStartCommand(intent, flags, startId)
     }
 }
