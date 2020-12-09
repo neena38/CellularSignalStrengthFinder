@@ -79,12 +79,12 @@ class signalChange(private val context: Context) : PhoneStateListener() {
         wifiLevel = getLevel(wifiStrength)
         Log.e("wifi", "$wifiStrength\n$wifiLevel")
 
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-            level = signalStrength.level
-        } else {
-            signalStrength.evdoSnr
-            level=getCellularLevel(dbmStrength)
-        }
+//        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+//            level = signalStrength.level
+//        } else {
+//            signalStrength.evdoSnr
+//            level=getCellularLevel(dbmStrength)
+//        }
 
 
         Toast.makeText(
